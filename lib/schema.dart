@@ -12,9 +12,8 @@ class AppSchema extends FirestoreSchema {
 
 @Schema()
 @Collection<User>('users')
+@Collection<Team>('users/*/teams')
 @Collection<Team>('teams')
 @Collection<MyTransaction>('teams/*/transactions')
 @Collection<User>('teams/*/transactions/*/concerns')
 const appSchema = AppSchema();
-
-

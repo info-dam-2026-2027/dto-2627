@@ -5,6 +5,7 @@ part 'user.freezed.dart';
 part 'user.g.dart';
 
 @freezed
+@firestoreOdm
 abstract class User with _$User {
   const factory User({
     @DocumentIdField() required String id,

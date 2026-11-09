@@ -25,6 +25,23 @@ extension AppSchemaFirestoreODMExtension on FirestoreODM<AppSchema> {
           );
 
   FirestoreCollection<AppSchema, Team, TeamPatchBuilder, TeamFilterBuilder,
+      TeamOrderByBuilder, TeamAggregateBuilder> usersTeams(
+          String p1) =>
+      FirestoreCollection(
+        ref: firestore.collection("users/${p1}/teams"),
+        toJson: (Team value) {
+          return TeamToJson(value) ?? const <String, dynamic>{};
+        },
+        fromJson: TeamFromJson,
+        documentIdField: 'id',
+        patchBuilderFactory: () => TeamPatchBuilder(),
+        filterBuilder: TeamFilterBuilder(),
+        orderByBuilderFunc: (context) => TeamOrderByBuilder(context: context),
+        aggregateBuilderFunc: (context) =>
+            TeamAggregateBuilder(context: context),
+      );
+
+  FirestoreCollection<AppSchema, Team, TeamPatchBuilder, TeamFilterBuilder,
           TeamOrderByBuilder, TeamAggregateBuilder>
       get teams => FirestoreCollection(
             ref: firestore.collection('teams'),

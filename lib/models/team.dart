@@ -6,6 +6,7 @@ part 'team.freezed.dart';
 part 'team.g.dart';
 
 @freezed
+@firestoreOdm
 abstract class Team with _$Team {
   const factory Team({
     @DocumentIdField() required String id,

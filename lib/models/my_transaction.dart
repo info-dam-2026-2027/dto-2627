@@ -5,6 +5,7 @@ part 'my_transaction.freezed.dart';
 part 'my_transaction.g.dart';
 
 @freezed
+@firestoreOdm
 abstract class MyTransaction with _$MyTransaction {
   const factory MyTransaction({
     @DocumentIdField() required String id,
